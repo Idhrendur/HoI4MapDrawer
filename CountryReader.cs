@@ -43,7 +43,12 @@ namespace ProvinceMapper
 					string tag = line.Substring(0, 3);
 					int firstQuote = line.IndexOf("\"");
 					string file = line.Substring(firstQuote);
-					file = file.Trim('\"');
+                    int hash = line.IndexOf("#");
+                    if (hash != -1)
+                    {
+                        file = file.Substring(hash);
+                    }
+                    file = file.Trim('\"');
 					countryFiles[tag] = file;
 				}
 			}
