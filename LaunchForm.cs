@@ -109,23 +109,27 @@ namespace ProvinceMapper
 		void getSelectedMods()
 		{
 			selectedMods.Clear();
-			HashSet<String> selectedModNames = new HashSet<string>();
 
-			foreach (CheckBox control in modsGroup.Controls)
-			{
-				if ((control.GetType() == typeof(CheckBox)) && (control.Checked))
-				{
-					selectedModNames.Add(control.Text);
-				}
-			}
+            if (modsGroup != null)
+            {
+                HashSet<String> selectedModNames = new HashSet<string>();
 
-			foreach (HoI4Mod mod in mods)
-			{
-				if (selectedModNames.Contains(mod.name))
-				{
-					selectedMods.Add(mod);
-				}
-			}
+                foreach (CheckBox control in modsGroup.Controls)
+                {
+                    if ((control.GetType() == typeof(CheckBox)) && (control.Checked))
+                    {
+                        selectedModNames.Add(control.Text);
+                    }
+                }
+
+                foreach (HoI4Mod mod in mods)
+                {
+                    if (selectedModNames.Contains(mod.name))
+                    {
+                        selectedMods.Add(mod);
+                    }
+                }
+            }
 		}
 
 		private void btnExit_Click(object sender, EventArgs e)
@@ -253,7 +257,7 @@ namespace ProvinceMapper
 						modsGroup.Controls.Add(checkBox);
 					}
 				}
-				else
+				else if (modsGroup != null)
 				{
 					foreach (System.Windows.Forms.Control control in modsGroup.Controls)
 					{
