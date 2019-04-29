@@ -122,7 +122,11 @@ namespace ProvinceMapper
 				{
 					continue;
 				}
-				else if (token == "=")
+                if (token == "rgb")
+                {
+                    continue;
+                }
+                else if (token == "=")
 				{
 					continue;
 				}
