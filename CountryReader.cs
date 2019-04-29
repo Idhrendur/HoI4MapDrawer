@@ -98,6 +98,13 @@ namespace ProvinceMapper
 				}
 
 				int[] digits = getDigitsfromLine(line);
+                for (int i = 0; i < digits.Length; i++)
+                {
+                    if (digits[i] > 255)
+                    {
+                        digits[i] = 255;
+                    }
+                }
 				Color countryColor = Color.FromArgb(0, digits[0], digits[1], digits[2]);
 				countries[tag] = countryColor;
 			}
